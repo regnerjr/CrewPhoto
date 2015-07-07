@@ -1,19 +1,7 @@
-//
-//  AppDelegate.swift
-//
-//  Copyright 2011-present Parse Inc. All rights reserved.
-//
-
 import UIKit
 
 import Bolts
 import Parse
-
-// If you want to use any of the UI components, uncomment this line
-// import ParseUI
-
-// If you want to use Crash Reporting - uncomment this line
-// import ParseCrashReporting
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,22 +13,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //--------------------------------------
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Enable storing and querying data from Local Datastore. 
-        // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
+
         Parse.enableLocalDatastore()
 
-        // ****************************************************************************
-        // Uncomment this line if you want to enable Crash Reporting
-        // ParseCrashReporting.enable()
-        //
+        if let path = NSBundle.mainBundle().pathForResource("Keys", ofType: "plist"),
+            dict = NSDictionary(contentsOfFile: path),
+            let applicationId = keys["parseApplicationId"] as? String,
+            let clientKey = keys["parseClientKey"] as? String{
+
+            // Initialize Parse.
+            Parse.setApplicationId(applicationId!, clientKey: clientKey!)
+        } else {
+            println("Parse not initialized correctly")
+        }
         // Uncomment and fill in with your Parse credentials:
         // Parse.setApplicationId("your_application_id", clientKey: "your_client_key")
         //
         // If you are using Facebook, uncomment and add your FacebookAppID to your bundle's plist as
         // described here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/
-        // Uncomment the line inside ParseStartProject-Bridging-Header and the following line here:
-        // PFFacebookUtils.initializeFacebook()
-        // ****************************************************************************
+        PFFacebookUtils.initializeFacebook()
 
         PFUser.enableAutomaticUser()
 

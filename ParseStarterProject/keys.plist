@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>parseApplicationID</key>
+	<string>Insert Your ID Here</string>
+	<key>parseClientKey</key>
+	<string>Insert Your Key Here</string>
+	<key>FacebookAppID</key>
+	<string></string>
+	<key>FacebookDisplayName</key>
+	<string>CrewPhoto</string>
+	<key>URL types</key>
+	<array>
+		<dict>
+			<key>URL Schemes</key>
+			<array>
+				<string>fb_URLSchemeHere</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
