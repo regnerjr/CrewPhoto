@@ -1,3 +1,16 @@
-# Exclude user-specific files
+## Build generated
+build/
+DerivedData
+
+## Exclude user-specific files
 xcuserdata
 
+
+## Dont save API Keys
+*.plist
+
+## Other
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+*.xcscmblueprint
