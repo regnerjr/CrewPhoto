@@ -2,6 +2,7 @@ import UIKit
 
 import Bolts
 import Parse
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -11,6 +12,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //--------------------------------------
     // MARK: - UIApplicationDelegate
     //--------------------------------------
+    func applicationDidBecomeActive(application: UIApplication) {
+        FBSDKAppEvents.activateApp()
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -18,20 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if let path = NSBundle.mainBundle().pathForResource("Keys", ofType: "plist"),
             dict = NSDictionary(contentsOfFile: path),
-            let applicationId = keys["parseApplicationId"] as? String,
-            let clientKey = keys["parseClientKey"] as? String{
+            let applicationId = dict["parseApplicationId"] as? String,
+            let clientKey = dict["parseClientKey"] as? String{
 
             // Initialize Parse.
-            Parse.setApplicationId(applicationId!, clientKey: clientKey!)
+            Parse.setApplicationId(applicationId, clientKey: clientKey)
         } else {
             println("Parse not initialized correctly")
         }
-        // Uncomment and fill in with your Parse credentials:
-        // Parse.setApplicationId("your_application_id", clientKey: "your_client_key")
-        //
-        // If you are using Facebook, uncomment and add your FacebookAppID to your bundle's plist as
-        // described here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/
-        PFFacebookUtils.initializeFacebook()
+
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
 
         PFUser.enableAutomaticUser()
 
@@ -57,18 +57,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
             }
         }
-        if application.respondsToSelector("registerUserNotificationSettings:") {
-            let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
-            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
-            application.registerUserNotificationSettings(settings)
-            application.registerForRemoteNotifications()
-        } else {
-            let types = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound
-            application.registerForRemoteNotifications()
-            application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: types, categories: nil))
-        }
+
+        let types = UIUserNotificationType.Badge |
+                    UIUserNotificationType.Alert |
+                    UIUserNotificationType.Sound
+        application.registerForRemoteNotifications()
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: types, categories: nil))
+
 
         return true
+    } //didFinishLaunching
+
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance()
+            .application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
     //--------------------------------------
@@ -82,9 +84,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         PFPush.subscribeToChannelInBackground("") { (succeeded: Bool, error: NSError?) in
             if succeeded {
-                println("ParseStarterProject successfully subscribed to push notifications on the broadcast channel.");
+                println("CrewPhotos successfully subscribed to push notifications on the broadcast channel.");
             } else {
-                println("ParseStarterProject failed to subscribe to push notifications on the broadcast channel with error = %@.", error)
+                println("CrewPhotos failed to subscribe to push notifications on the broadcast channel with error = %@.", error)
             }
         }
     }
@@ -113,14 +115,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //     }
     // }
 
-    //--------------------------------------
-    // MARK: Facebook SDK Integration
-    //--------------------------------------
-
-    ///////////////////////////////////////////////////////////
-    // Uncomment this method if you are using Facebook
-    ///////////////////////////////////////////////////////////
-    // func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-    //     return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication, session:PFFacebookUtils.session())
-    // }
 }
