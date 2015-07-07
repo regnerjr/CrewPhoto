@@ -6,18 +6,5 @@
 	<string>Insert Your ID Here</string>
 	<key>parseClientKey</key>
 	<string>Insert Your Key Here</string>
-	<key>FacebookAppID</key>
-	<string></string>
-	<key>FacebookDisplayName</key>
-	<string>CrewPhoto</string>
-	<key>URL types</key>
-	<array>
-		<dict>
-			<key>URL Schemes</key>
-			<array>
-				<string>fb_URLSchemeHere</string>
-			</array>
-		</dict>
-	</array>
 </dict>
 </plist>

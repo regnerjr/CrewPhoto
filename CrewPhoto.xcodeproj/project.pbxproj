@@ -338,7 +338,7 @@
 				INFOPLIST_FILE = ParseStarterProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = CrewPhoto;
-				SWIFT_OBJC_BRIDGING_HEADER = "ParseStarterProject/CrewPhotos-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ParseStarterProject/ParseStarterProject-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -355,7 +355,7 @@
 				INFOPLIST_FILE = ParseStarterProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = CrewPhoto;
-				SWIFT_OBJC_BRIDGING_HEADER = "ParseStarterProject/CrewPhotos-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ParseStarterProject/ParseStarterProject-Bridging-Header.h";
 			};
 			name = Release;
 		};
