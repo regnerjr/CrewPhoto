@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0CF721F1-CDCC-4860-B301-214924FBD372</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CrewPhoto</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F27F809A1A16B68F559B7EA6718DA5B645A609E0</key>
+		<string>github.com:regnerjr/CrewPhoto.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CrewPhoto.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F27F809A1A16B68F559B7EA6718DA5B645A609E0</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:regnerjr/CrewPhoto.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F27F809A1A16B68F559B7EA6718DA5B645A609E0</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F27F809A1A16B68F559B7EA6718DA5B645A609E0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CrewPhoto</string>
+		</dict>
+	</array>
+</dict>
+</plist>
