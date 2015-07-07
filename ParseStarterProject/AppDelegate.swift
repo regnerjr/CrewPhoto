@@ -3,6 +3,7 @@ import UIKit
 import Bolts
 import Parse
 import FBSDKCoreKit
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Parse.enableLocalDatastore()
 
-        if let path = NSBundle.mainBundle().pathForResource("Keys", ofType: "plist"),
+        if let path = NSBundle.mainBundle().pathForResource("keys", ofType: "plist"),
             dict = NSDictionary(contentsOfFile: path),
             let applicationId = dict["parseApplicationId"] as? String,
             let clientKey = dict["parseClientKey"] as? String{
@@ -58,15 +59,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
-        let types = UIUserNotificationType.Badge |
-                    UIUserNotificationType.Alert |
-                    UIUserNotificationType.Sound
-        application.registerForRemoteNotifications()
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: types, categories: nil))
+//        let types = UIUserNotificationType.Badge |
+//                    UIUserNotificationType.Alert |
+//                    UIUserNotificationType.Sound
+//        application.registerForRemoteNotifications()
+//        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: types, categories: nil))
 
 
-        return true
-    } //didFinishLaunching
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance()
